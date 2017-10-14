@@ -127,4 +127,10 @@ public class Suite extends ParentRunner<Runner> {
     protected void runChild(Runner runner, final RunNotifier notifier) {
         runner.run(notifier);
     }
+
+    @Override
+    public String toString() {
+        return "Suite [runners=" + runners + ", getChildren()=" + getChildren()
+                + "]";
+    }
 }

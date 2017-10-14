@@ -11,7 +11,7 @@ import org.junit.runners.model.InitializationError;
 
 class JUnitCommandLineParseResult {
     private final List<String> filterSpecs = new ArrayList<String>();
-    private final List<Class<?>> classes = new ArrayList<Class<?>>();
+    private final List<Class<?>> classes = new ArrayList<Class<?>>();  // 测试用例所在类
     private final List<Throwable> parserErrors = new ArrayList<Throwable>();
 
     /**
@@ -132,6 +132,13 @@ class JUnitCommandLineParseResult {
         } catch (FilterNotCreatedException e) {
             return errorReport(e);
         }
+    }
+    
+    @Override
+    public String toString() {
+        return "JUnitCommandLineParseResult [filterSpecs=" + filterSpecs
+                + ", classes=" + classes + ", parserErrors=" + parserErrors
+                + "]";
     }
 
     /**

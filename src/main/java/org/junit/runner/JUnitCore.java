@@ -33,7 +33,9 @@ public class JUnitCore {
      * @param args names of classes in which to find tests to run
      */
     public static void main(String... args) {
+        System.out.println("FX Junit start for UT");
         Result result = new JUnitCore().runMain(new RealSystem(), args);
+        System.out.println("FX Junit game over with result = " + result);
         System.exit(result.wasSuccessful() ? 0 : 1);
     }
 
@@ -67,13 +69,20 @@ public class JUnitCore {
      * @param args from main()
      */
     Result runMain(JUnitSystem system, String... args) {
-        system.out().println("JUnit version " + Version.id());
+        system.out().println("JUnit 版本 " + Version.id());
+        System.out.println("FX JunitCore runMain() system = " + system);
+        System.out.println("FX JunitCore runMain() args = " + args);
 
+        // 用于解析参数
         JUnitCommandLineParseResult jUnitCommandLineParseResult = JUnitCommandLineParseResult.parse(args);
-
+        System.out.println("FX JunitCore runMain jUnitCommandLineParseResult = " + jUnitCommandLineParseResult);
+        
+        // 用于处理测试结果信息的Listener
         RunListener listener = new TextListener(system);
+        System.out.println("FX JunitCore runMain listener = " + listener);
         addListener(listener);
 
+        // 运行测试用例
         return run(jUnitCommandLineParseResult.createRequest(defaultComputer()));
     }
 
@@ -129,6 +138,9 @@ public class JUnitCore {
      * Do not use. Testing purposes only.
      */
     public Result run(Runner runner) {
+        // 真正运行测试用例
+        System.out.println("FX   ....   run test case");
+        System.out.println("FX " + runner);
         Result result = new Result();
         RunListener listener = result.createListener();
         notifier.addFirstListener(listener);
@@ -139,6 +151,7 @@ public class JUnitCore {
         } finally {
             removeListener(listener);
         }
+        System.out.println("FX   ....   run test case end");
         return result;
     }
 

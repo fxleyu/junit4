@@ -65,6 +65,14 @@ public class Result implements Serializable {
         return failures.size();
     }
 
+    @Override
+    public String toString() {
+        return "Result [count=" + count + ", ignoreCount=" + ignoreCount
+                + ", failures=" + failures + ", runTime=" + runTime
+                + ", startTime=" + startTime + ", serializedForm="
+                + serializedForm + "]";
+    }
+
     /**
      * @return the number of milliseconds it took to run the entire suite to run
      */

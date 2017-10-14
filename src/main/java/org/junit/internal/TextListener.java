@@ -98,4 +98,11 @@ public class TextListener extends RunListener {
     protected String elapsedTimeAsString(long runTime) {
         return NumberFormat.getInstance().format((double) runTime / 1000);
     }
+
+    @Override
+    public String toString() {
+        return "TextListener [writer=" + writer + ", getWriter()=" + getWriter()
+                + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+                + ", toString()=" + super.toString() + "]";
+    }
 }
